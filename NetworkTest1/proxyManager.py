@@ -7,7 +7,7 @@ from selenium import webdriver
 
 class ProxyManager:
 
-    __BMP = "C:\\Users\\AloTech\\PycharmProjects\\Test1\\browsermob-proxy-2.1.4\\bin\\browsermob-proxy.bat"
+    __BMP = "Local Path for browsermob proxy\\PycharmProjects\\Test1\\browsermob-proxy-2.1.4\\bin\\browsermob-proxy.bat"
 
     def __init__(self):
         self.__server = Server(ProxyManager.__BMP)
@@ -34,12 +34,12 @@ class MtTest(unittest.TestCase):
     proxy = ProxyManager()
     server = proxy.start_server()
     client = proxy.start_client()
-    client.new_har("AloTech Selenium")
+    client.new_har("Selenium Har")
     print(client.proxy)
 
     options = webdriver.ChromeOptions()
     options.add_argument("--proxy-server={}".format(client.proxy))
-    driver = webdriver.Chrome("C:\\Users\\AloTech\\PycharmProjects\\Test1\\chromedriver.exe", chrome_options=options)
+    driver = webdriver.Chrome("Local Path\\PycharmProjects\\Test1\\chromedriver.exe", chrome_options=options)
     driver.maximize_window()
     driver.delete_all_cookies()
     '''
@@ -51,13 +51,13 @@ class MtTest(unittest.TestCase):
     clearButton.click()
     wait.until_not(clearButton)
     '''
-    driver.get("https://staging1.alo-tech.com/v2/tr/login2.html")
+    driver.get("Your Test URL")
     time.sleep(7)
 
     '''Selenium Test Adımları:'''
     # Login & MT Ekranına Giriş
-    driver.find_element_by_id("email").send_keys("emre.ozturk@alo-tech.com")
-    driver.find_element_by_id("password").send_keys("123456")
+    driver.find_element_by_id("email").send_keys(" ")
+    driver.find_element_by_id("password").send_keys(" ")
     driver.save_screenshot("Selenium1.png")
     driver.find_element_by_class_name("MuiButton-label").click()
     time.sleep(5)
